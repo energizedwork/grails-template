@@ -7,9 +7,13 @@ target(main: "The description of the script goes here!") {
 
 target(renameApplication: "renames the template app to given project name") {
 	String appName = argsMap.appName
-	event "StatusUpdate", ["\nRenaming template project to ${appName}\n"]
 
-	updateApplicationProperties(appName)
+	if (appName) {
+		event "StatusUpdate", ["\nRenaming template project to ${appName}\n"]
+		updateApplicationProperties(appName)
+	} else {
+		ant.fail(message:"\n **** Please specify application name by adding --appName=<appplication-name> ****\n")
+	}
 }
 
 void updateApplicationProperties(String appName) {
