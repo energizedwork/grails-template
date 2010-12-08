@@ -10,4 +10,4 @@ target(renameApplication: "renames the template app to given project name") {
 	event "StatusUpdate", ["Renaming template project to ${appName}"]
 }
 
-setDefaultTarget(main)git 
+setDefaultTarget(main)
